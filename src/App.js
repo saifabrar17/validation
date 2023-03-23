@@ -1,10 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
-
+import Form from '../src/components/molecules/Form'
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Form></Form>
+      
     </div>
   );
 }
