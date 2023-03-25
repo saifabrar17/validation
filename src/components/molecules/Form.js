@@ -40,20 +40,19 @@ const Form = () => {
     return errors;
   };
 
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value,
     });
+    const errors = validate({ ...formData, [name]: value });
     setFormErrors({
       ...formErrors,
-      [name]: "",
+      [name]: errors[name],
     });
   };
 
-  
   return (
     <div className="w-3/4 mx-auto shadow-lg p-10">
       <form onSubmit={handleSubmit}>
