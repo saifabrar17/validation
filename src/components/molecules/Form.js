@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../atoms/Button";
+import Input from "../atoms/Input";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +13,7 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     const errors = validate(formData);
     setFormErrors(errors);
 
@@ -39,6 +40,7 @@ const Form = () => {
     return errors;
   };
 
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -51,41 +53,35 @@ const Form = () => {
     });
   };
 
+  
   return (
-    <div>
+    <div className="w-3/4 mx-auto shadow-lg p-10">
       <form onSubmit={handleSubmit}>
-        <div>
-          <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
-          <input
-            type="text"
-            name="name"
-            className="shadow border rounded w-full py-2 px-3 text-gray-700"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
-          {formErrors.name && <span className="text-red-500 text-base">{formErrors.name}</span>}
-        </div>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-          {formErrors.email && <span>{formErrors.email}</span>}
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-          />
-          {formErrors.password && <span>{formErrors.password}</span>}
-        </div>
-        {/* <button type="submit" className="bg-green-500 p-3 rounded-md text-white">Submit</button> */}
+        <Input
+          lableName="Name"
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          errorState={formErrors.name}
+        />
+        <Input
+          lableName="Email"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          errorState={formErrors.email}
+        />
+        <Input
+          lableName="Password"
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleInputChange}
+          errorState={formErrors.password}
+        />
+
         <Button />
       </form>
     </div>
