@@ -1,32 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
+import useShowHide from "../../hooks/useShowHide";
 import Button from "../atoms/Button";
 import Form from "./Form";
 
 const DivShowHide = () => {
-  const [divs, setDivs] = useState([]);
-
-  const handleAddClick = () => {
-    const newDiv = <div>New Div</div>;
-    setDivs([...divs, newDiv]);
-  };
-
-  const handleDeleteClick = (index) => {
-    const newDivs = divs.filter((div, i) => i !== index);
-    setDivs(newDivs);
-  };
-
-  console.log(divs);
+    const { divs, handleAddClick, handleDeleteClick } = useShowHide();
 
   return (
-    <div>
+    <div className="container mx-auto">
       {divs.map((div, index) => (
-        <div key={index}>
+        <div key={index} >
           {div}
           <Form ></Form>
           <Button title="Delete" onClick={() => handleDeleteClick(index)}>Delete Div</Button>
         </div>
       ))}
-      <Button onClick={handleAddClick} title="Add Div" />
+      <Button className="mt-3" onClick={handleAddClick} title="Add Div" />
       {/* <button onClick={handleAddClick}>Add Div</button> */}
     </div>
   );

@@ -1,61 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import useFormHook from "../../hooks/useFormHook";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 
 const Form = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const [formErrors, setFormErrors] = useState({});
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const errors = validate(formData);
-    setFormErrors(errors);
-
-    if (Object.keys(errors).length === 0) {
-      console.log(formData);
-    }
-  };
-
-  const validate = (data) => {
-    const errors = {};
-    if (!data.name) {
-      errors.name = "Name is required";
-    }
-    if (!data.email) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(data.email)) {
-      errors.email = "Email is invalid";
-    }
-    if (!data.password) {
-      errors.password = "Password is required";
-    } else if (data.password.length < 6) {
-      errors.password = "Password must be at least 6 characters";
-    }
-    return errors;
-  };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    const errors = validate({ ...formData, [name]: value });
-    setFormErrors({
-      ...formErrors,
-      [name]: errors[name],
-    });
-  };
-
+  const { handleSubmit, handleInputChange, formData, formErrors } =
+    useFormHook();
   return (
     <div className="w-3/4 mx-auto shadow-lg p-10">
-  
       <form onSubmit={handleSubmit}>
         <Input
           lableName="Name"
@@ -82,7 +34,7 @@ const Form = () => {
           errorState={formErrors.password}
         />
 
-        <Button title="Submit" onSubmit={handleSubmit}  />
+        <Button title="Submit" onSubmit={handleSubmit} />
       </form>
     </div>
   );
