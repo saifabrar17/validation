@@ -6,7 +6,8 @@ import Input from "../atoms/Input";
 const Form = () => {
   const { handleSubmit, handleInputChange, formData, formErrors } =
     useFormHook();
-  return (
+  
+    return (
     <div className="w-3/4 mx-auto shadow-lg p-10">
       <form onSubmit={handleSubmit}>
         <Input

@@ -21,7 +21,6 @@ export default function useFormValidation() {
     }
   };
 
-validate(formData);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
