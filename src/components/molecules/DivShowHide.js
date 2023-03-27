@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Button from "../atoms/Button";
+import Form from "./Form";
 
 const DivShowHide = () => {
   const [divs, setDivs] = useState([]);
@@ -14,16 +16,18 @@ const DivShowHide = () => {
   };
 
   console.log(divs);
+
   return (
     <div>
       {divs.map((div, index) => (
         <div key={index}>
           {div}
-          <p>sss</p>
-          <button onClick={() => handleDeleteClick(index)}>Delete Div</button>
+          <Form ></Form>
+          <Button title="Delete" onClick={() => handleDeleteClick(index)}>Delete Div</Button>
         </div>
       ))}
-      <button onClick={handleAddClick}>Add Div</button>
+      <Button onClick={handleAddClick} title="Add Div" />
+      {/* <button onClick={handleAddClick}>Add Div</button> */}
     </div>
   );
 };

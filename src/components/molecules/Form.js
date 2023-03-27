@@ -55,6 +55,7 @@ const Form = () => {
 
   return (
     <div className="w-3/4 mx-auto shadow-lg p-10">
+  
       <form onSubmit={handleSubmit}>
         <Input
           lableName="Name"
@@ -81,7 +82,7 @@ const Form = () => {
           errorState={formErrors.password}
         />
 
-        <Button />
+        <Button title="Submit" onSubmit={handleSubmit}  />
       </form>
     </div>
   );
