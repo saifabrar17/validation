@@ -1,12 +1,14 @@
 import "./App.css";
-import DynamicForm from "./components/molecules/DynamicForm";
+
+import Users from "./users/components/Users";
 function App() {
   return (
     <div className="">
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
       {/* <Form></Form> */}
       {/* <DivShowHide></DivShowHide> */}
-      <DynamicForm></DynamicForm>
+      {/* <DynamicForm></DynamicForm> */}
+      <Users></Users>
     </div>
   );
 }

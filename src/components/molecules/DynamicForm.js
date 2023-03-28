@@ -20,7 +20,7 @@ const DynamicForm = () => {
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-      console.log(formData);
+      // console.log(formData);
     }
   };
 
